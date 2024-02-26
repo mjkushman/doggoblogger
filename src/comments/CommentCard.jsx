@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, Typography } from "@mui/material";
 import dayjs from 'dayjs'
 
 const CommentCard = ({ commentId, username, body, createdAt }) => {
-  const date = dayjs(createdAt).format('DD-MMM-YY')
+  const date = dayjs(createdAt).format('MMM DD, YYYY h:mm a ')
   return (
     <Card align="auto" sx={{m:1}}>
 

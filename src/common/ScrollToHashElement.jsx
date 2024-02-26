@@ -1,10 +1,10 @@
-import { useMemo, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-
 /** Enables linking and scrolling to a hashed anchor tag 
  * source: https://ncoughlin.com/posts/react-router-v6-hash-links/
  * 
 */
+
+import { useMemo, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const ScrollToHashElement = () => {
   let location = useLocation();

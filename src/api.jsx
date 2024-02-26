@@ -80,7 +80,7 @@ class AutobloggerApi {
   */
 
   static async addComment(postId, commentData) {
-    let res = await this.request(`posts/${postId}`,commentData,'post');
+    let res = await this.request(`posts/${postId}/comments`,commentData,'post');
     return res.comment;
   }
 
@@ -94,25 +94,26 @@ class AutobloggerApi {
 // Get a single user by id
 
 static async getUserById(userId) {
-    let res = await this.request(`users/${userId}`);
+    let res = await this.request(`users/id?=${userId}`);
     return res.user;
   }
 // Get a single user by username
 
 static async getUserByUsername(username) {
-    let res = await this.request(`users/${username}`);
+    let res = await this.request(`users/?username=${username}`);
     return res.user;
   }
 
 
-//   static async registerUser(formData) {
-//     let res = await this.request(`auth/register`,formData,'post');
-//     return res.token;
-//   }
-//   static async loginUser(formData) {
-//     let res = await this.request(`auth/token`,formData,'post');
-//     return res.token;
-//   }
+  static async registerUser(formData) {
+    let res = await this.request(`auth/register`,formData,'post');
+    return res.token;
+  }
+
+  static async loginUser(formData) {
+    let res = await this.request(`auth/login`,formData,'post');
+    return res.token;
+  }
 //   // get a specific user profile
 //   static async getProfile(username) {
 //     let res = await this.request(`users/${username}`);

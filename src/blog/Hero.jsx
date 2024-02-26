@@ -1,12 +1,26 @@
-import { Container, Typography } from "@mui/material"
+import { Container, Typography } from "@mui/material";
 
+const Hero = ({ headline, size }) => {
+  let height = "20vh";
+  if (size == "large") {
+    height = "50vh";
+  }
 
-const Hero = () => {
   return (
-    <Container sx={{height:'50vh', display:'flex',alignItems:'center', justifyContent:'center'}}>
-        <Typography variant="h1" sx={{textAlign:'center'}}>autoblogger</Typography>
-        </Container>
-  )
-}
+    <Container
+      sx={{
+        height: { height },
+        // display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        maxHeight:'500px'
+      }}
+    >
+      <Typography variant="h2" element='h1' sx={{ textAlign: "center" }}>
+        {headline}
+      </Typography>
+    </Container>
+  );
+};
 
-export default Hero
+export default Hero;

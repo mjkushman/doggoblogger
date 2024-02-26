@@ -13,9 +13,7 @@ import { Container } from '@mui/material'
 const Blog = () => {
   return (
     <Container>
-      <Hero/>
-    <div>Blog Section</div>
-    
+      <Hero headline={"autoblogger"} size={"large"}/>
     <PostList />
     </Container>
   )

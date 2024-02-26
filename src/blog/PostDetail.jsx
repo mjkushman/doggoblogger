@@ -1,11 +1,23 @@
-import { Avatar, Box, Typography, Stack, Link, Button } from '@mui/material'
-import {useEffect, useState, useContext} from 'react'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import { useParams } from 'react-router-dom'
-import AutobloggerApi from '../api'
-import parse from 'html-react-parser'
-import CommentList from '../comments/CommentList'
+import {
+  Avatar,
+  Box,
+  Typography,
+  Stack,
+  Link,
+  Button,
+  Container,
+} from "@mui/material";
+import { useEffect, useState, useContext } from "react";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import { useNavigate, useParams } from "react-router-dom";
+import AutobloggerApi from "../api";
+import parse from "html-react-parser";
+import CommentList from "../comments/CommentList";
+import Loading from "../common/Loading";
+import Hero from "./Hero";
+
+// import './PostDetail.css'
 
 /** A full blog post
  *  Includes the full text
@@ -14,52 +26,60 @@ import CommentList from '../comments/CommentList'
 
 const PostDetail = () => {
   // const date = dayjs(createdAt).format('DD-MMM-YY')
-  const {postId} = useParams()
-  const [post, setPost] = useState('loading')
-  const [ postUser, setPostUser ] = useState(null)
+  const { postId } = useParams();
+  const [post, setPost] = useState("loading");
 
-    useEffect( () => {
-      async function getPost() {
-       let postRes = await AutobloggerApi.getPost(postId)
-       setPost(postRes)
-       console.log(post)
-       let userRes = await AutobloggerApi.getUserById(postRes.userId)
-       setPostUser(userRes)
-       
-       console.log(postUser)
+  const [isLoading, setIsLoading] = useState(true);
+  let [date, setDate] = useState();
+  const navigate = useNavigate();
 
-      } 
-      // async function getUser(){
+  useEffect(() => {
+    setIsLoading(true);
+    async function getPost() {
+      try {
+        let postRes = await AutobloggerApi.getPost(postId);
+        console.log("POST RES", postRes);
+        setPost(postRes);
+        setDate((dayjs(postRes.createdAt).format('MMM DD, YYYY')))
+      } catch (error) {
+        console.log("error loading post:", error);
+        navigate('/notfound',{replace:true})
 
-      // }
+      }
+    }
+    getPost();
+    setIsLoading(false);
+    // handle an invalid postId
+  }, [postId]);
 
-      // getUser()
-      getPost()
+  if (isLoading) return <Loading />;
 
-    },[postId])
-    
+  return (
+    <>
+      <Hero headline={post.titlePlaintext} />
+      <Container maxWidth="md" >
+        <Box maxWidth="md" sx={{ p: 4, t: 2}}>
+          <Typography
+            color="inherit"
+            variant="h2"
+            underline="none"
+            gutterBottom
+            >
+            {post.titlePlaintext}
+          </Typography>
+          <Stack direction="row" spacing={3} sx={{ p: 3 }}>
+            <Avatar src={post.authorImageUrl} />
+            <Typography sx={{ flexGlow: 1 }}> {post.username}</Typography>
+            <Typography>{date}</Typography>
+          </Stack>
+          
+          <Box  p={4}>{post.bodyHtml && parse(String(post.bodyHtml))} </Box>
 
+          <CommentList postId={postId} />
+        </Box>
+      </Container>
+    </>
+  );
+};
 
-
-    return (
-    <Box sx={{p:4, t:2,maxWidth:600}}>
-      <Typography color='inherit' variant='h6' underline="none" gutterBottom>{post.titlePlaintext}</Typography>
-      <Stack direction="row" spacing={3} sx={{p:3}} >
-        
-        <Avatar src="cleo-500.png"/>
-        <Typography sx={ {flexGlow: 1 }}> username here</Typography>
-        <Typography>data will go here</Typography>
-        </Stack>
-        <Box p={4}>{post.bodyHtml && parse(String(post.bodyHtml))} </Box>
-      
-  
-        
-        <CommentList postId={postId}/>
-
-
-
-      </Box>
-  )
-}
-
-export default PostDetail
+export default PostDetail;

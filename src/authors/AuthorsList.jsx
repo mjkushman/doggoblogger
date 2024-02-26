@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 import AutobloggerApi from '../api'
 import AuthorCard from './AuthorCard'
 import Grid from '@mui/material/Unstable_Grid2/Grid2'
+import Loading from '../common/Loading'
 
 /** Authors list 
  * Should render list of Authors
@@ -30,7 +31,7 @@ const AuthorsList = () => {
     getAuthors()
   }, [])
 
-  if(isLoading) return "LOADING..."
+  if(isLoading) return <Loading />
   return (
       // Hero header component
       // List of authors

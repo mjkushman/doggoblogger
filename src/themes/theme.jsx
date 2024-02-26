@@ -6,26 +6,34 @@ import { createTheme } from "@mui/material";
 
 
 const themeOptions = {
-  palette: {
-    mode: 'light',
-    primary: {
-      main: '#1976d2',
-    },
-    secondary: {
-      main: '#f50057',
+palette: {
+  mode: 'light',
+  primary: {
+    main: '#738D98',
+  },
+  secondary: {
+    main: '#ad4212',
+  },
+},
+props: {
+  MuiAppBar: {
+    color: 'transparent',
+  },
+},
+spacing: 8,
+shape: {
+  borderRadius: 2,
+},
+overrides: {
+  MuiAppBar: {
+    colorInherit: {
+      backgroundColor: '#689f38',
+      color: '#fff',
     },
   },
-  props: {
-    MuiAppBar: {
-      color: 'transparent',
-    },
-  },
-  spacing: 8,
-  shape: {
-    borderRadius: 2,
-  },
+},
 };
+
 
 const theme = createTheme(themeOptions)
 export default theme
-
