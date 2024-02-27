@@ -1,6 +1,6 @@
 import React from 'react'
 import PostList from './PostList'
-import Hero from './Hero'
+import Hero from '../common/Hero'
 import { Container } from '@mui/material'
 
 
@@ -12,10 +12,12 @@ import { Container } from '@mui/material'
 // Post List component . This is the list which holds cards
 const Blog = () => {
   return (
+    <>
+    <Hero headline={"autoblogger"} size={"lg"}/>
     <Container>
-      <Hero headline={"autoblogger"} size={"large"}/>
     <PostList />
     </Container>
+    </>
   )
 }
 

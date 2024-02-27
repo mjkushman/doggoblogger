@@ -3,19 +3,16 @@ import {
   Box,
   Typography,
   Stack,
-  Link,
-  Button,
   Container,
 } from "@mui/material";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
 import { useNavigate, useParams } from "react-router-dom";
 import AutobloggerApi from "../api";
 import parse from "html-react-parser";
 import CommentList from "../comments/CommentList";
 import Loading from "../common/Loading";
-import Hero from "./Hero";
+import Hero from "../common/Hero";
 
 // import './PostDetail.css'
 
@@ -33,12 +30,13 @@ const PostDetail = () => {
   let [date, setDate] = useState();
   const navigate = useNavigate();
 
+  // Retrieve the blog post 
   useEffect(() => {
     setIsLoading(true);
     async function getPost() {
       try {
         let postRes = await AutobloggerApi.getPost(postId);
-        console.log("POST RES", postRes);
+        // console.log("POST RES", postRes);
         setPost(postRes);
         setDate((dayjs(postRes.createdAt).format('MMM DD, YYYY')))
       } catch (error) {
@@ -56,17 +54,17 @@ const PostDetail = () => {
 
   return (
     <>
-      <Hero headline={post.titlePlaintext} />
+      <Hero headline={post.titlePlaintext} size='' backgroundImage={post.postImageUrl} />
       <Container maxWidth="md" >
         <Box maxWidth="md" sx={{ p: 4, t: 2}}>
-          <Typography
+          {/* <Typography
             color="inherit"
             variant="h2"
             underline="none"
             gutterBottom
             >
             {post.titlePlaintext}
-          </Typography>
+          </Typography> */}
           <Stack direction="row" spacing={3} sx={{ p: 3 }}>
             <Avatar src={post.authorImageUrl} />
             <Typography sx={{ flexGlow: 1 }}> {post.username}</Typography>

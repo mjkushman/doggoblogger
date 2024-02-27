@@ -73,7 +73,7 @@ const { setToken, currentUser } = useContext(UserContext);
         alignItems: "center",
       }}
     >
-      <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
+      <Avatar sx={{ m: 1, bgcolor: "primary.main" }}></Avatar>
       <Typography component="h1" variant="h4">
         Sign In
       </Typography>

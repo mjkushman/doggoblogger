@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, lazy, Suspense } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 
 import AutobloggerApi from "../api";
 import { Stack, Box, Container } from "@mui/material";
@@ -13,12 +13,11 @@ const CommentCard = lazy(() => import("./CommentCard.jsx"));
  * Render a PostCard for each blog post
  *
  * Use a mechanism to filter the cards. Lists of cards will need to be in state?
- *
  * Later, lazy load can be added so they don't all load at onnce. Needs a "load more" opion.
  */
 
 const CommentList = ({ postId }) => {
-  console.debug("CommentList");
+  // console.debug("CommentList");
   // Should return
   // 1. Filters for the list.
   // 2. A card for each item in the list
@@ -60,6 +59,8 @@ const CommentList = ({ postId }) => {
     await AutobloggerApi.addComment(postId, commentData);
 
     getComments(); // fetch comments to update the list
+    // run every X seconds:
+    // getComments(); // fetch comments to update the list
     setIsLoading(false);
   };
 
@@ -70,7 +71,7 @@ const CommentList = ({ postId }) => {
       {error && <Box>Something messed up: {error}</Box>}
       {numComments} {numComments == 1 ? "Comment" : "Comments"}
       <Stack id="comments" sx={{ backgroundColor: grey[200] }}>
-        {console.log("comments in the return", comments)}
+
         {!isLoading &&
           comments.map(({ commentId, body, username, createdAt }) => (
             <Grid key={commentId}>

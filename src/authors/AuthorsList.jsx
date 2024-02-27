@@ -4,6 +4,7 @@ import AutobloggerApi from '../api'
 import AuthorCard from './AuthorCard'
 import Grid from '@mui/material/Unstable_Grid2/Grid2'
 import Loading from '../common/Loading'
+import Hero from '../common/Hero'
 
 /** Authors list 
  * Should render list of Authors
@@ -34,7 +35,10 @@ const AuthorsList = () => {
   if(isLoading) return <Loading />
   return (
       // Hero header component
-      // List of authors
+      <>
+    
+    <Hero headline='meet the authors' />
+
     <Container>
       <Grid container spacing={2}>
       {!isLoading && authors.map(({username, 
@@ -53,6 +57,7 @@ const AuthorsList = () => {
 
 
     </Container>
+    </>
   )
 }
 

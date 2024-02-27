@@ -25,7 +25,7 @@ const NewCommentForm = ({ addComment }) => {
   };
 
   const handleSubmit = (e) => {
-    console.log("handling form submit");
+    // console.log("handling form submit");
     e.preventDefault();
     addComment(currentUser.userId, formData.message);
   };

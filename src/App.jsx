@@ -32,14 +32,14 @@ function App() {
 
   useEffect( () => {
     async function updateUserUponToken(token){
-      console.log('running updateUserUponToken. TOKEN:', token)
+      // console.log('running updateUserUponToken. TOKEN:', token)
       setCurrentUser(() => {
-        console.log('running setCurentUser. TOKEN:', token)
+
         if(!token) return // if there is no token, Return without trying to decode it.
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(token)); // persist the token in local storage
 
         let decodedToken = jwtDecode(token)
-        console.log('TOKEN DECODED:',decodedToken)
+
         AutobloggerApi.token = token
         return decodedToken
       })
@@ -50,7 +50,6 @@ function App() {
 
   const context ={
     currentUser,
-    // setCurrentUser, // do I need to pass this in context? I don't think so. Any function should use setToken instead which should update the current user.
     setToken,
     LOCAL_STORAGE_KEY
   }
