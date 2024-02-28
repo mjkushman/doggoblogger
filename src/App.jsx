@@ -4,6 +4,7 @@ import Appbar from "./routes-nav/Appbar";
 import Copyright from "./common/Copyright";
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
+import { CssBaseline } from "@mui/material";
 
 import "./App.css";
 import UserContext from "./common/UserContext";
@@ -56,6 +57,7 @@ function App() {
   return (
     <UserContext.Provider value={context}>
     <BrowserRouter>
+      <CssBaseline />
       <Appbar />
       <AppRoutes />
       <Copyright/>
