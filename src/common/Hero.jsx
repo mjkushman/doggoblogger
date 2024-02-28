@@ -33,6 +33,8 @@ const Hero = ({ headline, size, backgroundImage }) => {
       }}
     >
       <Box
+        p={0}
+        m={0}
         sx={{
           backdropFilter: "blur(3px) brightness(80%)",
           height: "100%",

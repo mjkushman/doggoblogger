@@ -1,4 +1,3 @@
-import React from 'react'
 import PostList from './PostList'
 import Hero from '../common/Hero'
 import { Container } from '@mui/material'

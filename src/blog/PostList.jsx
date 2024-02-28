@@ -1,4 +1,4 @@
-import { useEffect, useState, lazy } from "react";
+import { useEffect, useState } from "react";
 import PostPreview from "./PostPreview";
 import AutobloggerApi from "../api";
 import { Stack, Box, Container, Pagination } from '@mui/material';
@@ -28,7 +28,7 @@ const PostList = () => {
   async function getPosts() {
     try {
       let res = await AutobloggerApi.getAllPosts();
-      res = res.sort((a,b)=> (b.postId - a.postId))
+      res = res.sort((a,b)=> (new Date(b.createdAt) - new Date(a.createdAt)))
       // console.log('POST REST',res)
       setPosts(res);
     } catch (err) {
@@ -56,7 +56,7 @@ const PostList = () => {
     <Container>
       {error && <Box>Something messed up: {error}</Box>}
       <Stack spacing={4} justifyContent="center">
-        {currentPosts.map(({postId, titlePlaintext, username, numComments, bodyPlaintext, postImageUrl, createdAt, authorImageUrl,slug }) => (
+        {currentPosts.map(({postId, titlePlaintext, username, numComments, bodyPlaintext, createdAt, authorImageUrl,slug }) => (
       <Grid key={postId}>
         <PostPreview 
           postId={postId} 
@@ -69,7 +69,7 @@ const PostList = () => {
           slug={slug}/>
         </Grid>)
       )}
-      <Pagination count={posts.length/postsPerPage} showFirstButton showLastButton onChange={handlePageChange}/>
+      <Pagination count={Math.ceil(posts.length/postsPerPage)} showFirstButton showLastButton onChange={handlePageChange}/>
       
       </Stack>
       

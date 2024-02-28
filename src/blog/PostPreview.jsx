@@ -1,8 +1,5 @@
 import { Avatar, Box, Typography, Stack, Button, Link } from '@mui/material'
 import dayjs from 'dayjs'
-import { lazy } from 'react'
-
-
 
 
 
@@ -18,7 +15,7 @@ const PostPreview = ({postId, titlePlaintext, username, bodyPlaintext, createdAt
     
     return (
     <Box sx={{p:4, t:2,maxWidth:700}}>
-      <Link color='inherit' variant='h4' underline="none" href={postId}>{titlePlaintext}</Link>
+      <Link color='inherit' variant='h4' underline="none" href={slug+"/"+postId}>{titlePlaintext}</Link>
       <Stack direction="row" spacing={3} sx={{p:3}} >
       
         <Avatar src={authorImageUrl}/>

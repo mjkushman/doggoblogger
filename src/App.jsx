@@ -1,7 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./routes-nav/AppRoutes";
 import Appbar from "./routes-nav/Appbar";
-import ScrollToHashElement from "./common/ScrollToHashElement";
 import Copyright from "./common/Copyright";
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
@@ -54,8 +53,6 @@ function App() {
     LOCAL_STORAGE_KEY
   }
 
-
-  // {/* <ScrollToHashElement/> */}
   return (
     <UserContext.Provider value={context}>
     <BrowserRouter>

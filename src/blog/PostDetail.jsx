@@ -23,7 +23,7 @@ import Hero from "../common/Hero";
 
 const PostDetail = () => {
   // const date = dayjs(createdAt).format('DD-MMM-YY')
-  const { postId } = useParams();
+  const { postId, slug } = useParams();
   const [post, setPost] = useState("loading");
 
   const [isLoading, setIsLoading] = useState(true);
@@ -37,6 +37,9 @@ const PostDetail = () => {
       try {
         let postRes = await AutobloggerApi.getPost(postId);
         // console.log("POST RES", postRes);
+        if(postRes.slug !== slug) {
+          console.log('thats not a page')
+          navigate('/notfound',{replace:true})}
         setPost(postRes);
         setDate((dayjs(postRes.createdAt).format('MMM DD, YYYY')))
       } catch (error) {
