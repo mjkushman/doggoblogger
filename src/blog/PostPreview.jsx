@@ -23,7 +23,7 @@ const PostPreview = ({postId, titlePlaintext, username, bodyPlaintext, createdAt
         <Typography>{date}</Typography>
         </Stack>
 
-        <Box p={4}>{preview}{<Link href={postId} color='inherit' underline='none'>  ...read more</Link>}</Box>
+        <Box p={4}>{preview}{<Link href={slug+"/"+postId} color='inherit' underline='none'>  ...read more</Link>}</Box>
         <Stack direction="row" spacing={3} sx={{p:3}} >
           <Button color='inherit' href={`${postId}#comments`}>{numComments} {numComments == 1 ? "Comment": "Comments"}</Button>
 
