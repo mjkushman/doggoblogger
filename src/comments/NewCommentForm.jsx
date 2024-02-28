@@ -1,12 +1,10 @@
 import { useState, useContext } from "react";
 import {
   Box,
-  Container,
   TextField,
   Grid,
   Button,
   Link,
-  Avatar,
   Typography,
 } from "@mui/material";
 import UserContext from "../common/UserContext";
