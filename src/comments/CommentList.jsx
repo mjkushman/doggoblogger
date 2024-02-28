@@ -54,7 +54,6 @@ const CommentList = ({ postId }) => {
       userId: userId,
       body: msg,
     };
-
     setIsLoading(true);
     await AutobloggerApi.addComment(postId, commentData);
 
@@ -64,6 +63,8 @@ const CommentList = ({ postId }) => {
     setIsLoading(false);
   };
 
+
+  
   if (isLoading) return <Loading />;
 
   return (
