@@ -5,6 +5,7 @@ import PostDetail from "../blog/PostDetail";
 import Signup from "../login-signup/Signup";
 import Login from "../login-signup/Login";
 import Response404 from "../common/Response404";
+import About from "../about/About";
 
 const AppRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const AppRoutes = () => {
       <Route path="/authors" element={<AuthorsList />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/about" element={<About />} />
       <Route path="/:slug/:postId" element={<PostDetail />} />
       <Route path='notfound' element={<Response404 />}/>
       <Route path="/*" element={<Navigate to='/notfound' replace={true}/>} />

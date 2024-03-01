@@ -35,6 +35,10 @@ const Appbar = () => {
               {" "}
               Authors
             </Button>
+            <Button onClick={() => navigate("/about")} color="inherit">
+              {" "}
+              About
+            </Button>
             {!currentUser && 
             <><Button onClick={() => navigate("/login")} color="inherit">
               {" "}
@@ -46,13 +50,15 @@ const Appbar = () => {
             </Button> 
             </>
             } 
-            
             {currentUser && 
-            <Button onClick={logout} color="inherit">
+            <><Button onClick={logout} color="inherit">
               {" "}
               Sign Out
             </Button>
+            <Typography alignSelf='center'>{currentUser.username}</Typography>
+            </>
             }
+            
           </Stack>
         </Toolbar>
       </AppBar>

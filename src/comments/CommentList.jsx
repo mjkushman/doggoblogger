@@ -58,8 +58,9 @@ const CommentList = ({ postId }) => {
     await AutobloggerApi.addComment(postId, commentData);
 
     getComments(); // fetch comments to update the list
-    // run every X seconds:
-    // getComments(); // fetch comments to update the list
+    
+    // Fetch comments again after 10 seconds, to retrieve AI's response
+    setTimeout(() => getComments(), 10000)
     setIsLoading(false);
   };
 
