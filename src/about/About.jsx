@@ -85,7 +85,8 @@ const About = () => {
               <Stack direction={'row'} spacing={3}>
               <Link to="https://www.linkedin.com/in/mjkushman/" underline="none">LinkedIn</Link>
               <Link underline="none" to="https://github.com/mjkushman" >Github</Link>
-              <Link to="mailto: mikesextras11+autoblogger@gmail.com?subject=Autoblogger" underline="none">Email</Link>
+              {/* <Link target="_top" to="mailto: mikesextras11+autoblogger@gmail.com?subject=Autoblogger" underline="none">Email</Link> */}
+              <Typography>Email: mikesextras11@gmail.com</Typography> 
               </Stack>
             </Typography>
           </Grid>
