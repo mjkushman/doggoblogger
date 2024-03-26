@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, CssBaseline, Typography } from "@mui/material";
 
 const Hero = ({ headline, size, backgroundImage }) => {
   if (backgroundImage == null) {
@@ -17,9 +17,11 @@ const Hero = ({ headline, size, backgroundImage }) => {
   }
 
   return (
+
     <Container
       px={0}
       mx={0}
+      disableGutters
       sx={{
         height: { height },
         display: "flex",
@@ -37,22 +39,23 @@ const Hero = ({ headline, size, backgroundImage }) => {
         m={0}
         sx={{
           backdropFilter: "blur(3px) brightness(80%)",
-          height: "100%",
+          backgroundSize: "cover",
+          height: { height },
           width: "100%",
           justifyContent: "center",
           display: "flex",
           alignItems: "center",
-          color: "white",
-          margin: "0px",
-          padding: "0px",
+          color: "white"
         }}
       >
-        <Typography variant={variant} element="h1" sx={{ textAlign: "center" }}>
+        <Typography variant={variant} element="h1" sx={{ 
+          textAlign: "center" }}>
           {headline &&
             headline.toLowerCase().replace(/\b\w/g, (s) => s.toUpperCase())}
         </Typography>
       </Box>
     </Container>
+
   );
 };
 
