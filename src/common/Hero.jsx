@@ -1,4 +1,4 @@
-import { Box, Container, CssBaseline, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 
 const Hero = ({ headline, size, backgroundImage }) => {
   if (backgroundImage == null) {
