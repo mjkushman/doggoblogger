@@ -40,7 +40,7 @@ const Hero = ({ headline, size, backgroundImage }) => {
         sx={{
           backdropFilter: "blur(3px) brightness(80%)",
           backgroundSize: "cover",
-          height: { height },
+          height: "100%",
           width: "100%",
           justifyContent: "center",
           display: "flex",
