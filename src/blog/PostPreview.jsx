@@ -1,39 +1,47 @@
-import { Avatar, Box, Typography, Stack, Button, Link } from '@mui/material'
-import dayjs from 'dayjs'
+import { Avatar, Box, Typography, Stack, Link } from "@mui/material";
+import dayjs from "dayjs";
 
+import removeMd from "remove-markdown";
 
+const PostPreview = ({ postId, title, content, createdAt, authorId }) => {
+  const date = dayjs(createdAt).format("MMM DD, YYYY");
 
-const PostPreview = ({postId, titlePlaintext, username, bodyPlaintext, createdAt, numComments, authorImageUrl, slug}) => {
-    const date = dayjs(createdAt).format('MMM DD, YYYY')
-    let postUri = slug+"/"+postId
+  const plainText = removeMd(content) || "";
 
-    let preview = ''
-    if(bodyPlaintext){
-      const bodyArray = Array.from(bodyPlaintext).slice(0,300)
-      preview = bodyArray.join('')      
-    }
-    
-    
-    return (
-    <Box sx={{p:4, t:2,maxWidth:700}}>
-      <Link color='inherit' variant='h4' underline="none" href={postUri}>{titlePlaintext}</Link>
-      <Stack direction="row" spacing={3} sx={{p:3}} >
-      
-        <Avatar src={authorImageUrl}/>
-        <Typography sx={ {flexGlow: 1 }} > {username}</Typography>
+  return (
+    <Box sx={{ p: 4, t: 2, maxWidth: 700 }}>
+      <Link color="inherit" variant="h4" underline="none" href={postId}>
+        {title}
+      </Link>
+      <Stack direction="row" spacing={3} sx={{ p: 3 }}>
+        <Avatar>{authorId.slice(0, 2)}</Avatar>
+        <Typography sx={{ flexGlow: 1 }}> {authorId}</Typography>
         <Typography>{date}</Typography>
-        </Stack>
+      </Stack>
 
-        <Box p={4}>{preview}{<Link href={postUri} color='inherit' underline='none'>  ...read more</Link>}</Box>
-        <Stack direction="row" spacing={3} sx={{p:3}} >
-          <Button color='inherit' href={`${postUri}#comments`}>{numComments} {numComments == 1 ? "Comment": "Comments"}</Button>
-
-        </Stack>
-
-
-
+      <Box p={4} maxHeight={100}>
+        <Typography
+          variant="body2"
+          sx={{
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            display: '-webkit-box',
+            WebkitLineClamp: '5',
+            WebkitBoxOrient: 'vertical',
+         }}
+        >
+          {plainText}
+        </Typography>
+        {
+          <Link href={postId} color="purple" underline="none">
+            {" "}
+            read more
+          </Link>
+        }
       </Box>
-  )
-}
+      <Stack direction="row" spacing={3} sx={{ p: 3 }}></Stack>
+    </Box>
+  );
+};
 
-export default PostPreview
+export default PostPreview;

@@ -16,7 +16,7 @@ const AppRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/about" element={<About />} />
-      <Route path="/:slug/:postId" element={<PostDetail />} />
+      <Route path="/:postId" element={<PostDetail />} />
       <Route path='notfound' element={<Response404 />}/>
       <Route path="/*" element={<Navigate to='/notfound' replace={true}/>} />
     </Routes>
