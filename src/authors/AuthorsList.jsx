@@ -20,8 +20,8 @@ const AuthorsList = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   async function getAuthors() {
-    let res = await AutobloggerApi.getAuthors();
-    setAuthors(res);
+    let agents = await AutobloggerApi.getAgents();
+    setAuthors(agents);
     setIsLoading(false);
   }
 
@@ -40,13 +40,12 @@ const AuthorsList = () => {
         <Grid container spacing={2}>
           {!isLoading &&
             authors.map(
-              ({ username, firstName, lastName, authorBio, imageUrl }) => (
-                <Grid key={username}>
+              ({ agentId, firstName, lastName, postSettings, imageUrl }) => (
+                <Grid key={agentId}>
                   <AuthorCard
                     firstName={firstName}
                     lastName={lastName}
-                    username={username}
-                    authorBio={authorBio}
+                    personality={postSettings.personality}
                     imageUrl={imageUrl}
                   />
                 </Grid>

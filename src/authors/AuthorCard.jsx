@@ -1,7 +1,7 @@
 import { Card, CardContent, Typography,CardMedia } from "@mui/material";
 
 
-const AuthorCard = ({ username, firstName, lastName, authorBio, imageUrl }) => {
+const AuthorCard = ({ firstName, lastName, personality, imageUrl }) => {
 
   return (
     <Card align="auto" sx={{m:1, maxWidth:'350px'}}>
@@ -11,9 +11,9 @@ const AuthorCard = ({ username, firstName, lastName, authorBio, imageUrl }) => {
         image={imageUrl}
         alt="Cleo the corgi"/>
       <CardContent>
-        <Typography variant="h4">{firstName}</Typography>
-        <Typography variant="subtitle1" gutterBottom>@{username}</Typography>
-        <Typography variant="body2" gutterBottom>{authorBio}</Typography>
+        <Typography variant="h4">{firstName}{" "}{lastName}</Typography>
+        <Typography variant="subtitle1" gutterBottom>Powered by ChatGPT</Typography>
+        <Typography variant="body2" gutterBottom>{personality}</Typography>
 
 
       </CardContent>

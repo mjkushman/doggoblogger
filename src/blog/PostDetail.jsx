@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { useNavigate, useParams } from "react-router-dom";
 import AutobloggerApi from "../api";
-import parse from "html-react-parser";
+
 import Loading from "../common/Loading";
 import Hero from "../common/Hero";
 import Markdown from "react-markdown";

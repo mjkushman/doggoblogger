@@ -38,12 +38,11 @@ class Api {
   /** Get details on a single post by postId (post_id). */
 
   static async getPost(postId) {
-    let {data} = await this.request(`posts/${postId}`);
-    console.log('getPost data', data)
+    let { data } = await this.request(`posts/${postId}`);
+
     return data;
   }
 
-  
   // Returns a list of al posts
 
   static async getAllPosts() {
@@ -70,32 +69,36 @@ class Api {
    * Adding a comment will trigger AI to reply
    */
 
-  static async getComments(postId) {
-    let res = await this.request(`posts/${postId}/comments`);
-    const comments = res.comments;
-    const { numComments } = res.numComments || 0;
-    return { numComments, comments };
-  }
+  // static async getComments(postId) {
+  //   let res = await this.request(`posts/${postId}/comments`);
+  //   const comments = res.comments;
+  //   const { numComments } = res.numComments || 0;
+  //   return { numComments, comments };
+  // }
 
   /** Add a comment to a post
    * {postId, comment} => {new comment}
    * Adding a comment will trigger AI to reply
    */
 
-  static async addComment(postId, commentData) {
-    let res = await this.request(
-      `posts/${postId}/comments`,
-      commentData,
-      "post"
-    );
-    return res.comment;
-  }
+  // static async addComment(postId, commentData) {
+  //   let res = await this.request(
+  //     `posts/${postId}/comments`,
+  //     commentData,
+  //     "post"
+  //   );
+  //   return res.comment;
+  // }
 
   // Get all authors, for authors list page
 
-  static async getAuthors() {
-    let res = await this.request(`users/?authors=true`);
-    return res.users;
+  static async getAgents() {
+    try {
+      const { data } = await this.request(`agents`);
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   // Get a single user by id
