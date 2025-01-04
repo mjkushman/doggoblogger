@@ -13,8 +13,8 @@ const AppRoutes = () => {
       <Route path="/" element={<Blog />} />
 
       <Route path="/authors" element={<AuthorsList />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
+      {/* <Route path="/login" element={<Login />} /> */}
+      {/* <Route path="/signup" element={<Signup />} /> */}
       <Route path="/about" element={<About />} />
       <Route path="/:postId" element={<PostDetail />} />
       <Route path='notfound' element={<Response404 />}/>

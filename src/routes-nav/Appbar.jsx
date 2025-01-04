@@ -23,7 +23,7 @@ const Appbar = () => {
         <Toolbar className="Appbar">
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link href='/' variant="button" color='inherit' underline="none">
-            Autoblogger
+            Doggoblog
             </Link>
           </Typography>
           <Stack direction="row" spacing={2}>
@@ -39,25 +39,6 @@ const Appbar = () => {
               {" "}
               About
             </Button>
-            {!currentUser && 
-            <><Button onClick={() => navigate("/login")} color="inherit">
-              {" "}
-              Login
-            </Button>
-            <Button onClick={() => navigate("/signup")} color="inherit">
-              {" "}
-              Sign Up
-            </Button> 
-            </>
-            } 
-            {currentUser && 
-            <><Button onClick={logout} color="inherit">
-              {" "}
-              Sign Out
-            </Button>
-            <Typography alignSelf='center'>{currentUser.username}</Typography>
-            </>
-            }
             
           </Stack>
         </Toolbar>

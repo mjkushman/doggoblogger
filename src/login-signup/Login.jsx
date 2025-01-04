@@ -127,7 +127,7 @@ const { setToken, currentUser } = useContext(UserContext);
         <Grid container justifyContent="flex-end">
           <Grid>
             <Link href="/signup" variant="body2">
-              Don't have an account? Sign up.
+              Don&apos;t have an account? Sign up.
             </Link>
           </Grid>
         </Grid>
