@@ -11,7 +11,7 @@ class Api {
   static headers = { "X-API-KEY": API_KEY };
 
   static async request(endpoint, data = {}, method = "get") {
-    const url = `${BASE_URL}/api/v1/${endpoint}`;
+    const url = `${BASE_URL}api/v1/${endpoint}`;
     const config = {
       url,
       method,
