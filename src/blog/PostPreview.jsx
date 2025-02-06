@@ -9,37 +9,34 @@ const PostPreview = ({ postId, title, content, createdAt, authorId }) => {
   const plainText = removeMd(content) || "";
 
   return (
-    <Box sx={{ p: 4, t: 2, maxWidth: 700 }}>
+    <Box sx={{ mt: 2, t: 2, maxWidth: 700 }}>
       <Link color="inherit" variant="h4" underline="none" href={postId}>
         {title}
       </Link>
-      <Stack direction="row" spacing={3} sx={{ p: 3 }}>
+      <Stack direction="row" spacing={2} sx={{ p: 2 }}>
         <Avatar>{authorId.slice(0, 2)}</Avatar>
-        <Typography sx={{ flexGlow: 1 }}> {authorId}</Typography>
-        <Typography>{date}</Typography>
+        <Typography alignContent={"center"}>{date}</Typography>
       </Stack>
 
-      <Box p={4} maxHeight={100}>
+      <Box p={2} >
         <Typography
           variant="body2"
           sx={{
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            display: '-webkit-box',
-            WebkitLineClamp: '5',
-            WebkitBoxOrient: 'vertical',
-         }}
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            WebkitLineClamp: "5",
+            WebkitBoxOrient: "vertical",
+          }}
         >
           {plainText}
         </Typography>
-        {
-          <Link href={postId} color="purple" underline="none">
-            {" "}
-            read more
-          </Link>
-        }
+
+        <Link href={postId} color="purple" underline="none" my={1}>
+          {" "}
+          read more
+        </Link>
       </Box>
-      <Stack direction="row" spacing={3} sx={{ p: 3 }}></Stack>
     </Box>
   );
 };

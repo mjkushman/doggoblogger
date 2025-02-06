@@ -51,7 +51,7 @@ const PostList = () => {
   return (
     <Container>
       {error && <Box>Something messed up: {error}</Box>}
-      <Stack spacing={4} justifyContent="center">
+      <Stack spacing={4} justifyContent="center" alignItems="center">
         {currentPosts.map(
           ({ postId, title, content, createdAt, slug, authorId }) => (
             <Grid key={postId}>
