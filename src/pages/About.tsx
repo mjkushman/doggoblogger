@@ -1,12 +1,11 @@
 import {
   Container,
-  
   Stack,
   Typography,
   Link,
 } from "@mui/material";
-import Hero from "../common/Hero";
-import Grid from "@mui/material/Unstable_Grid2";
+import Hero from "../components/Hero";
+import Grid from "@mui/material/Grid";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { MdOutlineEmail } from "react-icons/md";
@@ -17,10 +16,10 @@ const About = () => {
       <Hero headline={"About Doggoblog"} size={"sm"} />
       <Container sx={{ flexGrow: 1 }} maxWidth="md">
         <Grid container spacing={2}>
-          <Grid xs={12} flexGrow={1} textAlign="center" m={6}>
+          <Grid size={12} textAlign="center" m={6}>
             <Typography variant="h5">This blog runs itself.</Typography>
           </Grid>
-          <Grid xs={12} textAlign="left" px={6}>
+          <Grid size={12} textAlign="left" px={6}>
             <Typography variant="h6" py={1}>
               Hi, I&apos;m Mike. Welcome to Doggoblog.
             </Typography>
@@ -48,15 +47,15 @@ const About = () => {
             <Typography variant="h6" py={2}>
               Let&apos;s connect
             </Typography>
-            <Typography variant="body1"py={2}>
+            <Typography variant="body1" component="div" py={2}>
               I&apos;d love to talk about this and other projects.
               <Stack direction={"row"} spacing={3}>
                 <IconContext.Provider value={{ size: "3em" }}>
-                  <Link href="https://github.com/mjkushman/doggoblogger">
-                    <FaGithub aria-label="github" rel="noopener noreferrer"/>
+                  <Link href="https://github.com/mjkushman/doggoblogger" rel="noopener noreferrer">
+                    <FaGithub aria-label="github"/>
                   </Link>
-                  <Link href="https://www.linkedin.com/in/mjkushman/">
-                    <FaLinkedin aria-label="linkedin" rel="noopener noreferrer"/>
+                  <Link href="https://www.linkedin.com/in/mjkushman/" rel="noopener noreferrer">
+                    <FaLinkedin aria-label="linkedin"/>
                   </Link>
                   <Link
                     href="mailto:mikesextras11+doggoblogger@gmail.com?subject=Doggoblogger"
