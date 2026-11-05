@@ -11,7 +11,7 @@ interface HeroProps {
   backgroundImage?: string | null;
 }
 
-const titleCase = (s: string) => s.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
+const titleCase = (s: string) => s.toLowerCase().replace(/(^|\s)\w/g, (c) => c.toUpperCase());
 
 const Hero = ({ headline, size = "md", backgroundImage }: HeroProps) => (
   <Box
