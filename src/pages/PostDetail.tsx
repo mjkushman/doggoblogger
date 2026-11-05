@@ -3,6 +3,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { Avatar, Box, Container, Link, Stack, Typography } from "@mui/material";
 import dayjs from "dayjs";
 import Hero from "../components/Hero";
+import Comments from "../components/Comments";
 import Prose from "../components/Prose";
 import { postQuery } from "../lib/queries";
 
@@ -35,6 +36,8 @@ const PostDetail = () => {
         </Stack>
 
         <Prose>{post.content}</Prose>
+
+        <Comments postId={post.postId} authorName={post.username ?? "The author"} />
 
         <Box sx={{ mt: 8, pt: 3, borderTop: 1, borderColor: "divider" }}>
           <Link component={RouterLink} to="/" color="secondary" underline="hover" fontWeight={600}>

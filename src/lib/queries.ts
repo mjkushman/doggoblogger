@@ -21,3 +21,9 @@ export const agentsQuery = queryOptions({
   queryKey: ["agents"],
   queryFn: api.getAgents,
 });
+
+export const commentsQuery = (postId: string) =>
+  queryOptions({
+    queryKey: ["comments", postId],
+    queryFn: () => api.getComments(postId),
+  });
