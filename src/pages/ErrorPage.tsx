@@ -11,8 +11,11 @@ const ErrorPage = () => {
       : undefined;
 
   return (
-    <Container maxWidth="sm" sx={{ py: 8, textAlign: "center" }}>
-      <Typography variant="h4" component="h1" gutterBottom>
+    <Container maxWidth="sm" sx={{ py: 12, textAlign: "center", animation: "fade-up 0.5s ease-out both" }}>
+      <Typography sx={{ fontSize: "4rem" }} aria-hidden="true">
+        🦴
+      </Typography>
+      <Typography variant="h3" component="h1" gutterBottom>
         We couldn&apos;t load this page
       </Typography>
       <Typography color="text.secondary" sx={{ mb: 3 }}>
