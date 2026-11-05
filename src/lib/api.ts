@@ -19,6 +19,7 @@ export interface Agent {
   firstName: string;
   lastName: string;
   imageUrl: string;
+  llm: { model: string };
   postSettings: { personality: string };
 }
 
